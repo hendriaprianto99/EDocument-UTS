@@ -13,7 +13,7 @@ include("menu.php");
 <div id="page-wrapper">
     <?php
     //cek otoritas
-    $q = "SELECT * FROM tw_hak_akses where tabel='logtw' and user = '" . $_SESSION['Email'] . "' and listData='1'";
+    $q = "SELECT * FROM tw_hak_akses WHERE tabel='logtw' AND user = '" . $_SESSION['Email'] . "' AND listData='1'";
     $r = mysqli_query($con, $q);
     if ($obj = mysqli_fetch_object($r)) {
     ?>
@@ -34,7 +34,7 @@ include("menu.php");
         <form action="listlogtw.php" method="post">
             <select class="form-control" name="select">
                 <?php
-                $menu = mysqli_query($con, "show columns from logtw");
+                $menu = mysqli_query($con, "SHOW COLUMNS FROM logtw");
                 while ($rowmenu = mysqli_fetch_array($menu)) {
                     echo "<option value='" . $rowmenu['Field'] . "'>" . $rowmenu['Field'] . "</option>";
                 }
@@ -48,7 +48,7 @@ include("menu.php");
         if (isset($_POST["cari"]) && $_POST["cari"] != "") {
             $cari = mysqli_real_escape_string($con, $_POST["cari"]);
             //hasil pencarian tabel
-            $dd = "SELECT * FROM logtw where " . $_POST["select"] . " like '%" . $cari . "%'";
+            $dd = "SELECT * FROM logtw WHERE " . $_POST["select"] . " LIKE '%" . $cari . "%'";
             $resultcari = mysqli_query($con, $dd);
             if ($obj = mysqli_fetch_object($resultcari)) {
                 $result = mysqli_query($con, $dd);

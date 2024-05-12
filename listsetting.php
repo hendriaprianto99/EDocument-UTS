@@ -12,8 +12,8 @@ include("menu.php");
 
 <div id="page-wrapper">
     <?php
-    //cek otoritas
-    $q = "SELECT * FROM tw_hak_akses where tabel='setting' and user = '" . $_SESSION['Email'] . "' and listData='1'";
+    // Cek otoritas
+    $q = "SELECT * FROM tw_hak_akses WHERE tabel='setting' AND user = '" . $_SESSION['Email'] . "' AND listData='1'";
     $r = mysqli_query($con, $q);
     if ($obj = mysqli_fetch_object($r)) :
     ?>
@@ -28,9 +28,9 @@ include("menu.php");
         <form action="listsetting.php" method="post">
             <select class="form-control" name="select">
                 <?php
-                $menu = mysqli_query($con, "show columns from setting");
+                $menu = mysqli_query($con, "SHOW COLUMNS FROM setting");
                 while ($rowmenu = mysqli_fetch_array($menu)) {
-                    echo "<option value=" . $rowmenu['Field'] . ">" . $rowmenu['Field'] . "</option>";
+                    echo "<option value='" . $rowmenu['Field'] . "'>" . $rowmenu['Field'] . "</option>";
                 }
                 ?>
             </select>
@@ -39,7 +39,7 @@ include("menu.php");
         </form>
         <br>
 
-        <!-- Tambahan bagian Jenis Pengguna -->
+        <!-- Bagian Jenis Pengguna -->
         <?php
         $result_jenis_pengguna = mysqli_query($con, "SELECT * FROM jenis_pengguna");
         if (mysqli_num_rows($result_jenis_pengguna) > 0) {
@@ -52,7 +52,6 @@ include("menu.php");
             echo "Data Jenis Pengguna tidak ditemukan.";
         }
         ?>
-
     <?php endif; ?>
 </div>
 

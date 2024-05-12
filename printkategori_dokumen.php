@@ -10,8 +10,8 @@ include("db.php");
 <div id="page-wrapper">
 
 <?php
-//ambil data setting  
-$hset = mysqli_query($con ,"select * from setting");  
+// Ambil data setting  
+$hset = mysqli_query($con ,"SELECT * FROM setting");  
 while($rset = mysqli_fetch_array($hset)){ 
 	$Nama = $rset["Nama"]; 
 	$Alamat = $rset["Alamat"]; 
@@ -20,42 +20,43 @@ while($rset = mysqli_fetch_array($hset)){
 } 
 ?> 
   
-<table width=100%>  
+<table width="100%">  
 <thead> 
   <tr>  
-    <td rowspan="3" width=20% align=center><?php echo "<img src='images/" . $Logo . "' width=100 height=100><br>"; ?></td> 
-    <td><font face=verdana size=5><?php echo $Nama; ?></font></td> 
+    <td rowspan="3" width="20%" align="center"><?php echo "<img src='images/" . $Logo . "' width='100' height='100'><br>"; ?></td> 
+    <td><font face="Verdana" size="5"><?php echo $Nama; ?></font></td> 
   </tr> 
   <tr> 
-    <td><font face=Verdana color=black size=1><?php echo $Alamat; ?></font></td> 
+    <td><font face="Verdana" color="black" size="1"><?php echo $Alamat; ?></font></td> 
   </tr> 
   <tr> 
-    <td><font face=Verdana color=black size=1>Telepon : <?php echo $Telepon; ?></font></td> 
+    <td><font face="Verdana" color="black" size="1">Telepon : <?php echo $Telepon; ?></font></td> 
   </tr>  
 </thead>  
 </table>  
 <hr> 
 
 <?php
-echo "<font face=Verdana color=black size=1>kategori_dokumen</font><br><br>";
+echo "<font face='Verdana' color='black' size='1'>kategori_dokumen</font><br><br>";
 $result = mysqli_query($con, "SELECT * FROM kategori_dokumen");
 echo "<div class='table-responsive'> "; 
-echo "<table id=laporan width=100%>"; 
-echo "<tr bgcolor=D3DCE3>
-<th><font face=Verdana color=black size=1>Kode</font></th>
-<th><font face=Verdana color=black size=1>Kategori</font></th>
-<th><font face=Verdana color=black size=1>Keterangan</font></th>
+echo "<table id='laporan' width='100%'>"; 
+echo "<tr bgcolor='D3DCE3'>
+<th><font face='Verdana' color='black' size='1'>Kode</font></th>
+<th><font face='Verdana' color='black' size='1'>Kategori</font></th>
+<th><font face='Verdana' color='black' size='1'>Keterangan</font></th>
 </tr>";
 while($row = mysqli_fetch_array($result))
   {
-  echo "<td><font face=Verdana color=black size=1>" . $row['Kode'] . "</font></td>";
-  echo "<td><font face=Verdana color=black size=1>" . $row['Kategori'] . "</font></td>";
-  echo "<td><font face=Verdana color=black size=1>" . $row['Keterangan'] . "</font></td>";
+  echo "<tr>";
+  echo "<td><font face='Verdana' color='black' size='1'>" . $row['Kode'] . "</font></td>";
+  echo "<td><font face='Verdana' color='black' size='1'>" . $row['Kategori'] . "</font></td>";
+  echo "<td><font face='Verdana' color='black' size='1'>" . $row['Keterangan'] . "</font></td>";
   echo "</tr>";
   }
 echo "</table><br>";
 echo "</div>";
 mysqli_close($con);
 echo "</td></tr>";
- ?>   
- </div> 
+?>   
+</div> 
