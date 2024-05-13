@@ -8,6 +8,7 @@
 <style>
     .div-1 {
         background-color: #ABBAEA;
+        padding: 5px;
     }
 </style>
 
